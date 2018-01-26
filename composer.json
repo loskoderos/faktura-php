@@ -1,0 +1,31 @@
+{
+    "name": "faktura",
+    "type": "library",
+    "description": "Faktura - HTML/PDF Invoice Generator",
+    "license": "Beerware",
+    "authors": [
+        {
+            "name": "Lukasz Cepowski",
+            "email": "lukasz@cepowski.com",
+            "homepage": "https://cepa.io"
+        }
+    ],
+    "support": {
+        "email": "hello@loskoderos.com"
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Faktura\\": "src/Faktura"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Faktura\\": "test/Faktura"
+        }
+    }
+}
