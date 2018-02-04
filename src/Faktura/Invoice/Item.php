@@ -2,7 +2,9 @@
 
 namespace Faktura\Invoice;
 
-class Item implements ItemInterface
+use Generic\Object\Object;
+
+class Item extends Object implements ItemInterface
 {
     /**
      * @var string

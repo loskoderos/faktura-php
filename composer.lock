@@ -4,12 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a9c11cdd5a557dacb0635ac77d30c0d",
-    "packages": [],
+    "content-hash": "4269a495df7fc38f2dbc76a686a847c2",
+    "packages": [
+        {
+            "name": "generic-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/loskoderos/generic-php",
+                "reference": "6c6e0b93e268f2ff91c6c56ee608f220560cf87a"
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Generic\\": "src/Generic"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Generic\\": "test/Generic"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lukasz Cepowski",
+                    "email": "lukasz@cepowski.com",
+                    "homepage": "https://cepa.io"
+                }
+            ],
+            "description": "Generic PHP utilities library",
+            "support": {
+                "email": "hello@loskoderos.com"
+            },
+            "time": "2018-02-04T19:36:13+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "generic-php": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

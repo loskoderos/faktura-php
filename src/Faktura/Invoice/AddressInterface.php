@@ -5,12 +5,6 @@ namespace Faktura\Invoice;
 interface AddressInterface
 {
     /**
-     * Contact name, might be a person or an entity.
-     * @return string
-     */
-    public function getContactName();
-    
-    /**
      * Street line.
      * @return string
      */
@@ -39,10 +33,4 @@ interface AddressInterface
      * @return string.
      */
     public function getPostCode();
-    
-    /**
-     * Additional information if needed.
-     * @return string
-     */
-    public function getExtra();
 }

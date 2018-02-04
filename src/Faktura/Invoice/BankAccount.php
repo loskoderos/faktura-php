@@ -2,7 +2,9 @@
 
 namespace Faktura\Invoice;
 
-class BankAccount implements BankAccountInterface
+use Generic\Object\Object;
+
+class BankAccount extends Object implements BankAccountInterface
 {
     /**
      * @var string
@@ -12,7 +14,7 @@ class BankAccount implements BankAccountInterface
     /**
      * @var string
      */
-    protected $bankSwiftCode;
+    protected $swiftCode;
     
     /**
      * @var string
@@ -51,10 +53,15 @@ class BankAccount implements BankAccountInterface
         return $this->iban;
     }
     
-    public function setBankSwiftCode($swiftCode)
+    public function setSwiftCode($swiftCode)
     {
-        $this->bankSwiftCode = (string) $swiftCode;
+        $this->swiftCode = (string) $swiftCode;
         return $this;
+    }
+    
+    public function getSwiftCode()
+    {
+        return $this->swiftCode;
     }
     
     public function setBankName($bankName)

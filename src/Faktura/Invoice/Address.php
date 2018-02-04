@@ -2,13 +2,10 @@
 
 namespace Faktura\Invoice;
 
-class Address implements AddressInterface
+use Generic\Object\Object;
+
+class Address extends Object implements AddressInterface
 {
-    /**
-     * @var string
-     */
-    protected $contactName;
-    
     /**
      * @var string
      */
@@ -33,22 +30,6 @@ class Address implements AddressInterface
      * @var string
      */
     protected $postCode;
-    
-    /**
-     * @var string
-     */
-    protected $extra;
-
-    public function setContactName($contactName)
-    {
-        $this->contactName = (string) $contactName;
-        return $this;
-    }
-    
-    public function getContactName()
-    {
-        return $this->contactName;
-    }
     
     public function setStreet($street)
     {
@@ -103,16 +84,5 @@ class Address implements AddressInterface
     public function getPostCode()
     {
         return $this->postCode;
-    }
-    
-    public function setExtra($extra)
-    {
-        $this->extra = (string) $extra;
-        return $this;
-    }
-    
-    public function getExtra()
-    {
-        return $this->extra;
     }
 }

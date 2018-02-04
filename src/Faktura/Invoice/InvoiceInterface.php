@@ -31,6 +31,12 @@ interface InvoiceInterface
     public function getDateOfIssue();
     
     /**
+     * get place of sell.
+     * @return string
+     */
+    public function getPlaceOfSell();
+    
+    /**
      * Get date of sell.
      * @return \DateTime
      */
@@ -50,7 +56,7 @@ interface InvoiceInterface
     
     /**
      * Get items
-     * @return Array<ItemInterface>
+     * @return \Generic\Collection\Collection<ItemInterface>
      */
     public function getItems();
     
@@ -74,7 +80,7 @@ interface InvoiceInterface
     
     /**
      * Get extra information.
-     * return string|array
+     * @return \Generic\Collection\Collection
      */
     public function getExtra();
     

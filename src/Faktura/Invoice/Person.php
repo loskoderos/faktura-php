@@ -2,7 +2,9 @@
 
 namespace Faktura\Invoice;
 
-class Person implements PersonInterface
+use Generic\Object\Object;
+
+class Person extends Object implements PersonInterface
 {
     /**
      * @var string
@@ -43,11 +45,6 @@ class Person implements PersonInterface
      * @var string
      */
     protected $companyReference;
-    
-    /**
-     * @var string
-     */
-    protected $extra;
     
     public function __construct()
     {
@@ -139,16 +136,5 @@ class Person implements PersonInterface
     public function getCompanyReference()
     {
         return $this->companyReference;
-    }
-    
-    public function setExtra($extra)
-    {
-        $this->extra = $extra;
-        return $this;
-    }
-    
-    public function getExtra()
-    {
-        return $this->extra;
     }
 }

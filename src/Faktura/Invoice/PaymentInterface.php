@@ -12,7 +12,7 @@ interface PaymentInterface
     public function getMethod();
     
     /**
-     * Get deduction amount to be substracted from the final payable amount.
+     * Get deduction amount to be subtracted from the final payable amount.
      * @return double
      */
     public function getDeductionAmount();

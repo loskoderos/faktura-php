@@ -2,7 +2,9 @@
 
 namespace Faktura\Invoice;
 
-class Payment implements PaymentInterface
+use Generic\Object\Object;
+
+class Payment extends Object implements PaymentInterface
 {
     /**
      * @var string

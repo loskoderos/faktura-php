@@ -53,10 +53,4 @@ interface PersonInterface
      * @return string
      */
     public function getCompanyReference();
-    
-    /**
-     * Get additional information.
-     * @return string|array
-     */
-    public function getExtra();
 }
