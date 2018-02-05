@@ -39,7 +39,7 @@ interface ItemInterface
      * Should be a numeral between [0.00, 1.00]
      * @return double
      */
-    public function getUnitTax();
+    public function getTaxPercentage();
     
     /**
      * Get total net cost of the item.

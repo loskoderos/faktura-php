@@ -14,7 +14,7 @@ class BankAccount extends Object implements BankAccountInterface
     /**
      * @var string
      */
-    protected $swiftCode;
+    protected $bankSwift;
     
     /**
      * @var string
@@ -36,10 +36,11 @@ class BankAccount extends Object implements BankAccountInterface
      */
     protected $beneficiaryAddress;
     
-    public function __construct()
+    public function __construct($collection = null)
     {
         $this->bankAddress = new Address();
         $this->beneficiaryAddress = new Address();
+        parent::__construct($collection);
     }
     
     public function setIban($iban)
@@ -52,16 +53,16 @@ class BankAccount extends Object implements BankAccountInterface
     {
         return $this->iban;
     }
-    
-    public function setSwiftCode($swiftCode)
+
+    public function setBankSwift($bankSwift)
     {
-        $this->swiftCode = (string) $swiftCode;
+        $this->bankSwift = (string) $bankSwift;
         return $this;
     }
     
-    public function getSwiftCode()
+    public function getBankSwift()
     {
-        return $this->swiftCode;
+        return $this->bankSwift;
     }
     
     public function setBankName($bankName)

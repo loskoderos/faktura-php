@@ -11,10 +11,10 @@ interface BankAccountInterface
     public function getIban();
     
     /**
-     * Get SWIFT code.
+     * Get bank SWIFT code.
      * @return string
      */
-    public function getSwiftCode();
+    public function getBankSwift();
     
     /**
      * Get bank name.

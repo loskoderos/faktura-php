@@ -24,7 +24,7 @@ class Invoice extends Object implements InvoiceInterface
     protected $placeOfIssue;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     protected $dateOfIssue;
     
@@ -34,19 +34,19 @@ class Invoice extends Object implements InvoiceInterface
     protected $placeOfSell;
     
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     protected $dateOfSell;
     
     /**
-     * @var PersonInterface
+     * @var PartyInterface
      */
-    protected $purchaser;
+    protected $seller;
     
     /**
-     * @var PersonInterface
+     * @var PartyInterface
      */
-    protected $vendor;
+    protected $buyer;
     
     /**
      * @var CollectionInterface
@@ -54,9 +54,29 @@ class Invoice extends Object implements InvoiceInterface
     protected $items;
     
     /**
-     * @var PaymentInterface
+     * @var string
      */
-    protected $payment;
+    protected $paymentMethod;
+    
+    /**
+     * @var DateTime
+     */
+    protected $paymentDueToDate;
+    
+    /**
+     * @var BankAccountInterface
+     */
+    protected $bankAccount;
+    
+    /**
+     * @var double
+     */
+    protected $deductionAmount;
+    
+    /**
+     * @var string
+     */
+    protected $deductionDescription;
     
     /**
      * @var string
@@ -75,12 +95,10 @@ class Invoice extends Object implements InvoiceInterface
     
     public function __construct($collection = null)
     {
-        $this->dateOfIssue = new \DateTime();
-        $this->dateOfSell = new \DateTime();
-        $this->purchaser = new Person();
-        $this->vendor = new Person();
+        $this->seller = new Party();
+        $this->buyer = new Party();
         $this->items = new Collection();
-        $this->payment = new Payment();
+        $this->bankAccount = new BankAccount();
         $this->extra = new Collection();
         parent::__construct($collection);
     }
@@ -107,7 +125,7 @@ class Invoice extends Object implements InvoiceInterface
         return $this->purchaseOrderReference;
     }
     
-    public function setPlaseOfIssue($placeOfIssue)
+    public function setPlaceOfIssue($placeOfIssue)
     {
         $this->placeOfIssue = (string) $placeOfIssue;
         return $this;
@@ -118,12 +136,19 @@ class Invoice extends Object implements InvoiceInterface
         return $this->placeOfIssue;
     }
     
-    public function setDateOfIssue(\DateTime $dateOfIssue)
+    public function setDateOfIssue($dateOfIssue)
     {
-        $this->dateOfIssue = $dateOfIssue;
+        if ($dateOfIssue instanceof DateTime) {
+            $this->dateOfIssue = $dateOfIssue;
+        } else {
+            $this->dateOfIssue = new DateTime((string) $dateOfIssue);
+        }
         return $this;
     }
     
+    /**
+     * @return DateTime
+     */
     public function getDateOfIssue()
     {
         return $this->dateOfIssue;
@@ -140,37 +165,50 @@ class Invoice extends Object implements InvoiceInterface
         return $this->placeOfSell;
     }
     
-    public function setDateOfSell(\DateTime $dateOfSell)
+    public function setDateOfSell($dateOfSell)
     {
-        $this->dateOfSell = $dateOfSell;
+        if ($dateOfSell instanceof DateTime) {
+            $this->dateOfSell = $dateOfSell;
+        } else {
+            $this->dateOfSell = new DateTime((string) $dateOfSell);
+        }
         return $this;
     }
     
+    /**
+     * @return DateTime
+     */
     public function getDateOfSell()
     {
         return $this->dateOfSell;
     }
-    
-    public function setPurchaser(PersonInterface $purchaser)
+
+    public function setSeller(PartyInterface $seller)
     {
-        $this->purchaser = $purchaser;
+        $this->seller = $seller;
         return $this;
     }
     
-    public function getPurchaser()
+    /**
+     * @return Party
+     */
+    public function getSeller()
     {
-        return $this->purchaser;
+        return $this->seller;
     }
     
-    public function setVendor(PersonInterface $vendor)
+    public function setBuyer(PartyInterface $buyer)
     {
-        $this->vendor = $vendor;
+        $this->buyer = $buyer;
         return $this;
     }
     
-    public function getVendor()
+    /**
+     * @return Party
+     */
+    public function getBuyer()
     {
-        return $this->vendor;
+        return $this->buyer;
     }
     
     public function setItems(ColectionInterface $items)
@@ -179,20 +217,87 @@ class Invoice extends Object implements InvoiceInterface
         return $this;
     }
     
+    /**
+     * @return Collection
+     */
     public function getItems()
     {
         return $this->items;
     }
     
-    public function setPayment(PaymentInterface $payment)
+    /**
+     * @return Item
+     */
+    public function newItem()
     {
-        $this->payment = $payment;
+        $item = new Item();
+        $this->items->add($item);
+        return $item;
+    }
+    
+    public function setPaymentMethod($paymentMethod)
+    {
+        $this->paymentMethod = (string) $paymentMethod;
         return $this;
     }
     
-    public function getPayment()
+    public function getPaymentMethod()
     {
-        return $this->payment;
+        return $this->paymentMethod;
+    }
+    
+    public function setPaymentDueToDate($paymentDueToDate)
+    {
+        if ($paymentDueToDate instanceof DateTime) {
+            $this->paymentDueToDate = $paymentDueToDate;
+        } else {
+            $this->paymentDueToDate = new DateTime($paymentDueToDate);
+        }
+        return $this;
+    }
+    
+    /**
+     * @return DateTime
+     */
+    public function getPaymentDueToDate()
+    {
+        return $this->paymentDueToDate;
+    }
+    
+    public function setBankAccount(BankAccountInterface $bankAccount)
+    {
+        $this->bankAccount = $bankAccount;
+        return $this;
+    }
+    
+    /**
+     * @return BankAccount
+     */
+    public function getBankAccount()
+    {
+        return $this->bankAccount;
+    }
+    
+    public function setDeductionAmount($deductionAmount)
+    {
+        $this->deductionAmount = (double) $deductionAmount;
+        return $this;
+    }
+    
+    public function getDeductionAmount()
+    {
+        return $this->deductionAmount;
+    }
+    
+    public function setDeductionDescription($deductionDescription)
+    {
+        $this->deductionDescription = (string) $deductionDescription;
+        return $this;
+    }
+    
+    public function getDeductionDescription()
+    {
+        return $this->deductionDescription;
     }
     
     public function setIssuedBy($issuedBy)
@@ -223,6 +328,9 @@ class Invoice extends Object implements InvoiceInterface
         return $this;
     }
     
+    /**
+     * @return Collection
+     */
     public function getExtra()
     {
         return $this->extra;

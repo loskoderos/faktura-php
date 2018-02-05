@@ -26,7 +26,7 @@ interface InvoiceInterface
     
     /**
      * Get date of issue.
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDateOfIssue();
     
@@ -38,21 +38,21 @@ interface InvoiceInterface
     
     /**
      * Get date of sell.
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDateOfSell();
     
     /**
-     * Get purchaser.
+     * Get selling party.
      * @return PersonInterface
      */
-    public function getPurchaser();
+    public function getSeller();
     
     /**
-     * Get vendor.
+     * Get buying party.
      * @return PersonInterface
      */
-    public function getVendor();
+    public function getBuyer();
     
     /**
      * Get items
@@ -61,11 +61,36 @@ interface InvoiceInterface
     public function getItems();
     
     /**
-     * Get payment.
-     * @return PaymentInterface
+     * Get payment method.
+     * For example 'transfer', 'cash', etc.
+     * @return string
      */
-    public function getPayment();
+    public function getPaymentMethod();
     
+    /**
+     * Get payment due to date.
+     * @return DateTime
+     */
+    public function getPaymentDueToDate();
+    
+    /**
+     * Get bank account.
+     * @return BankAccountInterface
+     */
+    public function getBankAccount();
+    
+    /**
+     * Get deduction amount to be subtracted from the final payable amount.
+     * @return double
+     */
+    public function getDeductionAmount();
+    
+    /**
+     * Get deduction description.
+     * @return string
+     */
+    public function getDeductionDescription();
+
     /**
      * Get issued by.
      * @return string
@@ -100,7 +125,7 @@ interface InvoiceInterface
     
     /**
      * Get gross amount.
-     * Usually: total amount = SUM(item 1 total amount, ...., item N total amount)
+     * Usually: total amount = SUM(item 1 total amount, ...., item N total amount) - deduction amount
      */
     public function computeTotalAmount();
 }

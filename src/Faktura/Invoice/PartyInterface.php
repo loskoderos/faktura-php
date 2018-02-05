@@ -2,7 +2,7 @@
 
 namespace Faktura\Invoice;
 
-interface PersonInterface
+interface PartyInterface
 {
     /**
      * Get business (company) name.
@@ -23,24 +23,6 @@ interface PersonInterface
     public function getAddress();
     
     /**
-     * Get email address.
-     * @return string
-     */
-    public function getEmailAddress();
-    
-    /**
-     * Get phone number.
-     * @return string
-     */
-    public function getPhoneNumber();
-    
-    /**
-     * Get website url.
-     * @return string
-     */
-    public function getWebsiteUrl();
-    
-    /**
      * Get tax reference number.
      * In EU it is VAT ID.
      * @return string
@@ -53,4 +35,10 @@ interface PersonInterface
      * @return string
      */
     public function getCompanyReference();
+    
+    /**
+     * Get extra details.
+     * @return \Generic\Collection\CollectionInterface
+     */
+    public function getExtra();
 }

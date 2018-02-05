@@ -2,9 +2,11 @@
 
 namespace Faktura\Invoice;
 
+use Generic\Collection\Collection;
+use Generic\Collection\CollectionInterface;
 use Generic\Object\Object;
 
-class Person extends Object implements PersonInterface
+class Party extends Object implements PartyInterface
 {
     /**
      * @var string
@@ -24,21 +26,6 @@ class Person extends Object implements PersonInterface
     /**
      * @var string
      */
-    protected $emailAddress;
-    
-    /**
-     * @var string
-     */
-    protected $phoneNumber;
-    
-    /**
-     * @var string
-     */
-    protected $websiteUrl;
-    
-    /**
-     * @var string
-     */
     protected $taxReference;
     
     /**
@@ -46,9 +33,16 @@ class Person extends Object implements PersonInterface
      */
     protected $companyReference;
     
-    public function __construct()
+    /**
+     * @var CollectionInterface
+     */
+    protected $extra;
+    
+    public function __construct($collection = null)
     {
         $this->address = new Address();
+        $this->extra = new Collection();
+        parent::__construct($collection);
     }
     
     public function setCompanyName($companyName)
@@ -83,39 +77,6 @@ class Person extends Object implements PersonInterface
         return $this->address;
     }
     
-    public function setEmailAddress($emailAddress)
-    {
-        $this->emailAddress = (string) $emailAddress;
-        return $this;
-    }
-    
-    public function getEmailAddress()
-    {
-        return $this->emailAddress;
-    }
-    
-    public function setPhoneNumber($phoneNumber)
-    {
-        $this->phoneNumber = (string) $phoneNumber;
-        return $this;
-    }
-    
-    public function getPhoneNumber()
-    {
-        return $this->phoneNumber;
-    }
-    
-    public function setWebsiteUrl($websiteUrl)
-    {
-        $this->websiteUrl = (string) $websiteUrl;
-        return $this;
-    }
-    
-    public function getWebsiteUrl()
-    {
-        return $this->websiteUrl;
-    }
-    
     public function setTaxReference($taxReference)
     {
         $this->taxReference = (string) $taxReference;
@@ -136,5 +97,16 @@ class Person extends Object implements PersonInterface
     public function getCompanyReference()
     {
         return $this->companyReference;
+    }
+    
+    public function setExtra(CollectionInterface $extra)
+    {
+        $this->extra = $extra;
+        return $this;
+    }
+    
+    public function getExtra()
+    {
+        return $this->extra;
     }
 }

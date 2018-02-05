@@ -34,7 +34,7 @@ class Item extends Object implements ItemInterface
     /**
      * @var double
      */
-    protected $unitTax;
+    protected $taxPercentage;
     
     public function setIndex($index)
     {
@@ -91,15 +91,15 @@ class Item extends Object implements ItemInterface
         return $this->unitNetPrice;
     }
     
-    public function setUnitTax($unitTax)
+    public function setTaxPercentage($taxPercentage)
     {
-        $this->unitTax = (double) $unitTax;
+        $this->taxPercentage = (double) $taxPercentage;
         return $this;
     }
     
-    public function getUnitTax()
+    public function getTaxPercentage()
     {
-        return $this->unitTax;
+        return $this->taxPercentage;
     }
     
     public function computeTotalNetAmount()
@@ -109,7 +109,7 @@ class Item extends Object implements ItemInterface
     
     public function computeTotalTaxAmount()
     {
-        return $this->computeTotalNetAmount() * $this->getUnitTax();
+        return $this->computeTotalNetAmount() * $this->getTaxPercentage();
     }
     
     public function computeTotalAmount()
