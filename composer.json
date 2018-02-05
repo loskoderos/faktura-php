@@ -1,5 +1,5 @@
 {
-    "name": "faktura",
+    "name": "loskoderos/faktura-php",
     "type": "library",
     "description": "Faktura - HTML/PDF Invoice Generator",
     "license": "MIT",
