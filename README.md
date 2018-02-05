@@ -42,6 +42,7 @@ https://github.com/loskoderos/faktura-php/blob/master/examples/simple_invoice_pl
 * Easily integrates with others.
 * Builtin templating using native PHP templates.
 * Builtin support for UTF-8 and images.
+* Extend template rendering with custom plugin functions.
 * Invoice structure can be customized, you can add custom fields to fit your needs.
 * Invoice can be serialized to save it in database for accounting purposes.
 * You can easily customize the library with overrides.
