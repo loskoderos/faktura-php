@@ -14,7 +14,7 @@
         "email": "hello@loskoderos.com"
     },
     "require": {
-        "generic-php": "dev-master",
+        "loskoderos/generic-php": "dev-master",
         "php": ">=5.4.0"
     },
     "require-dev": {
@@ -28,11 +28,5 @@
         "psr-4": {
             "Faktura\\": "test/Faktura"
         }
-    },
-    "repositories": [
-        {
-            "url": "https://github.com/loskoderos/generic-php",
-            "type": "git"
-        }
-    ]
+    }
 }

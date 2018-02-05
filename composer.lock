@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "eac07a10a31979738aa5c9151571dc0d",
+    "content-hash": "a88599a9296ebcc1059dad0f469401c0",
     "packages": [
         {
-            "name": "generic-php",
+            "name": "loskoderos/generic-php",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/loskoderos/generic-php",
-                "reference": "48fa73e50ef33f1ba75c2b64699f6344123097fc"
+                "url": "https://github.com/loskoderos/generic-php.git",
+                "reference": "779354c235e5bb7ae247ee227d5e6a99e397861a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/loskoderos/generic-php/zipball/779354c235e5bb7ae247ee227d5e6a99e397861a",
+                "reference": "779354c235e5bb7ae247ee227d5e6a99e397861a",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
@@ -23,11 +29,7 @@
                     "Generic\\": "src/Generic"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Generic\\": "test/Generic"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -39,17 +41,14 @@
                 }
             ],
             "description": "Generic PHP utilities library",
-            "support": {
-                "email": "hello@loskoderos.com"
-            },
-            "time": "2018-02-05T16:27:46+00:00"
+            "time": "2018-02-05T18:26:21+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "generic-php": 20
+        "loskoderos/generic-php": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
