@@ -3,10 +3,11 @@ Generate pretty PDF invoices in PHP.
 
 ## What is this?
 
-Faktura is a simple standalone PHP library to render PDF invoices in PHP.
+Faktura is a simple standalone PHP library for rendering PDF invoices in PHP.
 You can easily integrate it into your own project using standard tools like
 composer. Currently, Faktura depends on _xvfb_ and _wkhtmltopdf_ to create PDF
-files.
+files. Faktura has builtin rendering based on native PHP templates that can be
+customized with plugin functions.
 
 Sample PDF invoice: https://github.com/loskoderos/faktura-php/blob/master/examples/simple_invoice_pl.pdf
 ![sample](https://raw.githubusercontent.com/loskoderos/faktura-php/master/examples/screenshot1.png)
