@@ -1,6 +1,6 @@
 <?php
 
-namespace Faktura\Invoice;
+namespace Faktura\Entity;
 
 use Generic\Collection\Collection;
 use Generic\Collection\CollectionInterface;

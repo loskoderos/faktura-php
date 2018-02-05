@@ -6,7 +6,13 @@ interface TransportInterface
 {
     /**
      * Get HTML content.
-     * @return string
+     * @return mixed
      */
     public function getContent();
+    
+    /**
+     * Get assets collection.
+     * @return \Generic\Collection\CollectionInterface
+     */
+    public function getAssets();
 }

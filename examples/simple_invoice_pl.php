@@ -75,4 +75,5 @@ $invoice->newItem()
     ->setTaxPercentage(0.23)
     ;
 
-var_dump($invoice->toArray());
+$faktura->setTemplate(__DIR__ . '/simple_invoice_pl.phtml');
+$faktura->export($invoice, __DIR__ . '/simple_invoice_pl.pdf');

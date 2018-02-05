@@ -2,14 +2,15 @@
 
 namespace Faktura\Renderer;
 
-use Faktura\Transport\TransportInterface;
+use Faktura\Entity\InvoiceInterface;
 
 interface RendererInterface
 {
     /**
-     * Render an invoice compiled into a transport object.
-     * @param TransportInterface $transport
-     * @param string $filename
+     * Render an invoice to a transport object.
+     * @param InvoiceInterface $invoice
+     * @param string $template
+     * @return Faktura\Transport\TransportInterface;
      */
-    public function render(TransportInterface $transport, $filename);
+    public function render(InvoiceInterface $invoice, $template);
 }

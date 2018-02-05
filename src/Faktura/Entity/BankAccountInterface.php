@@ -1,6 +1,6 @@
 <?php
 
-namespace Faktura\Invoice;
+namespace Faktura\Entity;
 
 interface BankAccountInterface
 {
