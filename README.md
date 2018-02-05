@@ -8,7 +8,7 @@ You can easily integrate it into your own project using standard tools like
 composer. Currently, Faktura depends on _xvfb_ and _wkhtmltopdf_ to create PDF
 files.
 
-![simple_invoice_pl.pdf](https://raw.githubusercontent.com/loskoderos/faktura-php/raw/master/examples/simple_invoice_pl.pdf)
+Sample PDF invoice: https://github.com/loskoderos/faktura-php/blob/master/examples/simple_invoice_pl.pdf
 
 ## Basic usage
 ~~~php
