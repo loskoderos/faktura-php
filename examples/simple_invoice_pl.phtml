@@ -29,10 +29,11 @@ strong { font-size: 1.5em; }
 
 .header {
     text-align: right;
+    padding-top: 4em;
 }
 
 .footer {
-    font-size: 0.7em;
+    font-size: 0.75em;
     margin-top: 3em;
 }
 
@@ -55,29 +56,37 @@ table.grid th {
 
 table.contractors {
     font-size: 1.2em;
-    margin-top: 3em;
+    margin-top: 6em;
 }
 table.contractors td, table.contractors th {
     padding: 5px;
 }
+table.contractors td p {
+    line-height: 1.5em;
+    padding: 0.2em;
+    margin: 0;
+}
+table.contractors td p b {
+    font-size: 1.2em;
+}
 
 table.items {
-    font-size: 0.85em;
-    margin-top: 3em;
+    font-size: 0.95em;
+    margin-top: 6em;
 }
 table.items td, table.items th {
-    padding: 3px;
+    padding: 6px;
 }
 
 table.details {
-    margin-top: 3em;
+    margin-top: 6em;
 }
 table.details td {
     padding: 0.2em 1.5em;
 }
 
 table.signs {
-    margin-top: 6em;
+    margin-top: 9em;
 }
 
 </style>
@@ -85,12 +94,12 @@ table.signs {
 <body>
 
 <div class="header">
-    <img src="{{templateDir}}/hellokitty.jpg" style="float: left; width: 15%;" />
+    <img src="<?= $this->asset('fakelogo.png') ?>" style="float: left; width:50%" />
     Faktura VAT nr. / VAT Invoice no: <strong><?= $invoice->invoiceReference ?></strong><br />
     Oryginał / Original<br />
     Miejscowość / Place: <b><?= $invoice->placeOfIssue ?></b><br />
-    Data wystawienia / Date of issue: <b>{{dateOfIssue}}</b><br />
-    Data sprzedaży / Date of sell: <b>{{dateOfSell}}</b><br />
+    Data wystawienia / Date of issue: <b><?= $this->date($invoice->dateOfIssue) ?></b><br />
+    Data sprzedaży / Date of sell: <b><?= $this->date($invoice->dateOfSell) ?></b><br />
 </div>
 
 <table class="grid contractors">
@@ -108,9 +117,9 @@ table.signs {
                     <?= $invoice->seller->address->street ?><br />
                     <?= $invoice->seller->address->city ?> <?= $invoice->seller->address->postCode ?><br />
                     NIP <?= $invoice->seller->taxReference ?><br />
-                    <?php foreach ($invoice->seller->extra as $key => $value): ?>
-                       <?= $key ?> <?= $value ?><br />
-                    <?php endforeach ?>
+                    <?= $invoice->seller->extra->Phone ?><br />
+                    <?= $invoice->seller->extra->Email ?><br />
+                    <?= $invoice->seller->extra->WWW ?><br />
                 </p>
             </td>
             <td>
@@ -119,9 +128,8 @@ table.signs {
                     <?= $invoice->buyer->address->street ?><br />
                     <?= $invoice->buyer->address->city ?> <?= $invoice->buyer->address->postCode ?><br />
                     NIP <?= $invoice->buyer->taxReference ?><br />
-                    <?php foreach ($invoice->buyer->extra as $key => $value): ?>
-                       <?= $key ?> <?= $value ?><br />
-                    <?php endforeach ?>
+                    REGON <?= $invoice->buyer->extra->REGON ?><br />
+                    KRS <?= $invoice->buyer->extra->KRS ?><br />
                 </p>
             </td>
         </tr>
@@ -149,11 +157,11 @@ table.signs {
                 <td><?= $item->description ?></td>
                 <td class="text-right"><?= $item->quantity ?></td>
                 <td class="text-right"><?= $item->unitName ?></td>
-                <td class="text-right">{{#money}}<?= $item->unitNetPrice ?>{{/money}}</td>
-                <td class="text-right">{{#money}}<?= $item->totalNetAmount ?>{{/money}}</td>
-                <td class="text-right">{{#percent}}<?= $item->taxPercentage ?>{{/percent}}</td>
-                <td class="text-right">{{#money}}<?= $item->totalTaxAmount ?>{{/money}}</td>
-                <td class="text-right">{{#money}}<?= $item->totalAmount ?>{{/money}}</td>
+                <td class="text-right"><?= $this->money($item->unitNetPrice) ?></td>
+                <td class="text-right"><?= $this->money($item->totalNetAmount) ?></td>
+                <td class="text-right"><?= $this->percent($item->taxPercentage) ?></td>
+                <td class="text-right"><?= $this->money($item->totalTaxAmount) ?></td>
+                <td class="text-right"><?= $this->money($item->totalAmount) ?></td>
             </tr>
         <?php endforeach ?>
         <tr>
@@ -162,10 +170,10 @@ table.signs {
             <td></td>
             <td></td>
             <td class="text-right"><b>Razem</b><br />Total</td>
-            <td class="text-right">{{#money}}<?= $invoice->totalNetAmount ?>{{/money}}</td>
+            <td class="text-right"><?= $this->money($invoice->totalNetAmount) ?></td>
             <td></td>
-            <td class="text-right">{{#money}}<?= $invoice->totalNetAmount ?>{{/money}}</td>
-            <td class="text-right"><b>{{#money}}<?= $invoice->totalAmount ?>{{/money}}</b></td>
+            <td class="text-right"><?= $this->money($invoice->totalNetAmount) ?></td>
+            <td class="text-right"><b><?= $this->money($invoice->totalAmount) ?></b></td>
         </tr>
     </tbody>
 </table>
@@ -174,7 +182,7 @@ table.signs {
     <tbody>
         <tr>
             <td class="col33 text-right"><strong>Razem do zapłaty:</strong></td>
-            <td><strong><strong>{{#money}}<?= $invoice->totalAmount ?>{{/money}} PLN</strong></strong></td>
+            <td><strong><strong><?= $this->money($invoice->totalAmount) ?> <?= $invoice->currency ?></strong></strong></td>
         </tr>
         <tr>
             <td class="col33 text-right">Sposób zapłaty:</td>
@@ -182,7 +190,7 @@ table.signs {
         </tr>
         <tr>
             <td class="col33 text-right">Termin zapłaty:</td>
-            <td>{{paymentDeadline}}</td>
+            <td><?= $this->date($invoice->paymentDueToDate) ?></td>
         </tr>
         <tr>
             <td class="col33 text-right">Numer rachunku:</td>
@@ -195,7 +203,7 @@ table.signs {
     <tbody>
         <tr>
             <td class="col33 text-right"><b>Total to pay:</b></td>
-            <td><b>{{#money}}<?= $invoice->totalAmount ?>{{/money}} PLN</b></td>
+            <td><b><?= $this->money($invoice->totalAmount) ?> <?= $invoice->currency ?></b></td>
         </tr>
         <tr>
             <td class="col33 text-right">Payment method:</td>
@@ -203,7 +211,7 @@ table.signs {
         </tr>
         <tr>
             <td class="col33 text-right">Bank Account (IBAN):</td>
-            <td>PL{{#nospaces}}<?= $invoice->bankAccount->iban ?>{{/nospaces}}</td>
+            <td>PL<?= $this->nospaces($invoice->bankAccount->iban) ?></td>
         </tr>
         <tr>
             <td class="col33 text-right">Bank Code (SWIFT):</td>

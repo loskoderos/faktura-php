@@ -9,7 +9,7 @@ $faktura = new Faktura();
 $invoice = $faktura->newInvoice();
 $invoice
     ->setInvoiceReference('FV/123/2018/02')
-    ->setCurrency('PLN')
+    ->setCurrency('zł')
     ->setDateOfIssue('2018-02-06')
     ->setDateOfSell('2018-02-05')
     ->setPlaceOfIssue('Warszawa')
@@ -32,7 +32,7 @@ $invoice->getSeller()->getAddress()
     ;
 $invoice->getSeller()->getExtra()
     ->set('REGON', '123456789')
-    ->set('Phone', '502 123 456')
+    ->set('Phone', '+48 502 123 456')
     ->set('Email', 'contact@domain.tld')
     ->set('WWW', 'www.domain.tld')
     ;
@@ -50,7 +50,7 @@ $invoice->getBuyer()->getAddress()
 $invoice->getBuyer()->getExtra()
     ->set('REGON', '987654321')
     ->set('KRS', '0000392700')
-    ->set('Phone', '666 321 654')
+    ->set('Phone', '+48 666 321 654')
     ;
 
 $invoice->getBankAccount()
@@ -77,6 +77,26 @@ $invoice->newItem()
     ->setUnitNetPrice(100.00)
     ->setTaxPercentage(0.23)
     ;
+
+$faktura->getRenderer()->plugin('asset', function ($relativePath) {
+    return __DIR__ . '/' . $relativePath;
+});
+
+$faktura->getRenderer()->plugin('date', function ($datetime) {
+    return date('Y-m-d', $datetime->timestamp);
+});
+
+$faktura->getRenderer()->plugin('money', function ($value) {
+    return number_format($value, 2, ',', ' ');
+});
+
+$faktura->getRenderer()->plugin('percent', function ($value) {
+    return round($value * 100.0) . '%';
+});
+
+$faktura->getRenderer()->plugin('nospaces', function ($value) {
+    return str_replace(' ', '', $value);
+});
 
 $faktura->setTemplate(__DIR__ . '/simple_invoice_pl.phtml');
 $faktura->export($invoice, __DIR__ . '/simple_invoice_pl.pdf');
