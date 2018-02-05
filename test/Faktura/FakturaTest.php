@@ -4,6 +4,17 @@ namespace Faktura;
 
 use PHPUnit\Framework\TestCase;
 use Generic\Utils\ArrayUtils;
+use Faktura\Exporter\ExporterInterface;
+use Faktura\Transport\Transport;
+use Faktura\Transport\TransportInterface;
+
+class MockExporter implements ExporterInterface
+{
+    public function export(TransportInterface $transport, $filename)
+    {
+        return $transport->getContent();
+    }
+}
 
 class FakturaTest extends TestCase
 {
@@ -245,5 +256,50 @@ class FakturaTest extends TestCase
         $this->assertEquals($totalNet, $o->totalNetAmount);
         $this->assertEquals($totalTax, $o->totalTaxAmount);
         $this->assertEquals($total - $o->deductionAmount, $o->totalAmount);
+    }
+    
+    public function testRendering()
+    {
+        $faktura = new Faktura();
+        $faktura->setExporter(new MockExporter());
+        
+        $template = __DIR__ . '/mock-template.phtml';
+        $faktura->setTemplate($template);
+        
+        $faktura->getRenderer()->plugin('test', function ($value) {
+            return $value . ' is ok';
+        });
+        
+        $invoice = $faktura->newInvoice();
+        $invoice->setInvoiceReference('TEST 123');
+        
+        $result = $faktura->export($invoice, null);
+        $this->assertEquals('invoice TEST 123 is ok', $result);
+    }
+    
+    public function testWkhtmltopdfExport()
+    {
+        $faktura = new Faktura();
+        
+        $template = __DIR__ . '/mock-template.phtml';
+        $faktura->setTemplate($template);
+        
+        $faktura->getRenderer()->plugin('test', function ($value) {
+            return $value . ' is ok';
+        });
+        
+        $invoice = $faktura->newInvoice();
+        $invoice->setInvoiceReference('FOO/456');
+        
+        $filename = tempnam('/tmp', 'faktura-test');
+        @unlink($filename);
+        $filename .= '.pdf';
+        @unlink($filename);
+        $this->assertFalse(is_file($filename));
+        
+        $faktura->export($invoice, $filename);
+        
+        $this->assertTrue(is_file($filename));
+        @unlink($filename);
     }
 }
