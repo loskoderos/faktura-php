@@ -82,6 +82,9 @@ class BankAccount extends Object implements BankAccountInterface
         return $this;
     }
     
+    /**
+     * @return BankAccount
+     */
     public function getBankAddress()
     {
         return $this->bankAddress;
@@ -104,6 +107,9 @@ class BankAccount extends Object implements BankAccountInterface
         return $this;
     }
     
+    /**
+     * @return BankAccount
+     */
     public function getBeneficiaryAddress()
     {
         return $this->beneficiaryAddress;

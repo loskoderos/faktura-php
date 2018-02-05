@@ -72,6 +72,10 @@ class Party extends Object implements PartyInterface
         $this->address = $address;
         return $this;
     }
+    
+    /**
+     * @return Address
+     */
     public function getAddress()
     {
         return $this->address;

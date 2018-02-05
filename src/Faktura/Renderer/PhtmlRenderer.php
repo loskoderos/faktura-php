@@ -45,7 +45,12 @@ class PhtmlRenderer implements RendererInterface
         return new Transport(['content' => $content]);
     }
     
-    protected function arrayToObject($array)
+    /**
+     * Convert an array to an object.
+     * @param array $array
+     * @return \stdClass
+     */
+    protected function arrayToObject(array $array)
     {
         $object = new \stdClass();
         foreach ($array as $k => $v) {
@@ -56,6 +61,11 @@ class PhtmlRenderer implements RendererInterface
         return $object;
     }
     
+    /**
+     * Convert array element.
+     * @param mixed $v
+     * @return array|type
+     */
     protected function arrayElementValue($v)
     {
         if (is_array($v)) {
@@ -73,7 +83,12 @@ class PhtmlRenderer implements RendererInterface
         }
     }
     
-    protected function isAssocArray($array)
+    /**
+     * Check if array is an associative one.
+     * @param array $array
+     * @return boolean
+     */
+    protected function isAssocArray(array $array)
     {
         return count(array_filter(array_keys($array), 'is_string')) > 0;
     }

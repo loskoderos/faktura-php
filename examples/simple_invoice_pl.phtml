@@ -113,7 +113,7 @@ table.signs {
         <tr>
             <td>
                 <p>
-                    <b><?= $invoice->seller->companyName ?> <?= $invoice->seller->contactName ?></b><br />
+                    <b><?= $invoice->seller->companyName ?></b><br />
                     <?= $invoice->seller->address->street ?><br />
                     <?= $invoice->seller->address->city ?> <?= $invoice->seller->address->postCode ?><br />
                     NIP <?= $invoice->seller->taxReference ?><br />
@@ -124,12 +124,13 @@ table.signs {
             </td>
             <td>
                 <p>
-                    <b><?= $invoice->buyer->companyName ?> <?= $invoice->buyer->contactName ?></b><br />
+                    <b><?= $invoice->buyer->companyName ?></b><br />
                     <?= $invoice->buyer->address->street ?><br />
                     <?= $invoice->buyer->address->city ?> <?= $invoice->buyer->address->postCode ?><br />
                     NIP <?= $invoice->buyer->taxReference ?><br />
                     REGON <?= $invoice->buyer->extra->REGON ?><br />
                     KRS <?= $invoice->buyer->extra->KRS ?><br />
+                    <?= $invoice->buyer->extra->Phone ?><br />
                 </p>
             </td>
         </tr>
@@ -243,15 +244,15 @@ table.signs {
             <td class="col50 text-center">..............................................................................</td>
         </tr>
         <tr>
-            <td class="col50 text-center">Wystawił(a): <?= $invoice->seller->contactName ?></td>
-            <td class="col50 text-center">Odebrał(a): <?= $invoice->buyer->contactName ?></td>
+            <td class="col50 text-center">Wystawił(a): <?= $invoice->issuedBy ?></td>
+            <td class="col50 text-center">Odebrał(a): <?= $invoice->signedBy ?></td>
         </tr>
     </tbody>
 </table>
 
 <div class="footer">
     <p class="left text-left">
-        <?= $invoice->seller->companyName ?> <?= $invoice->seller->contactName ?><br />
+        <?= $invoice->seller->companyName ?><br />
         <?= $invoice->seller->address->city ?> <?= $invoice->seller->address->postCode ?>, ul. <?= $invoice->seller->address->street ?>
     </p>
     <p class="right text-right">

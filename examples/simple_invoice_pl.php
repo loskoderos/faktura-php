@@ -6,6 +6,9 @@ use Faktura\Faktura;
 
 $faktura = new Faktura();
 
+/**
+ * Create a new invoice.
+ */
 $invoice = $faktura->newInvoice();
 $invoice
     ->setInvoiceReference('FV/123/2018/02')
@@ -16,13 +19,16 @@ $invoice
     ->setPlaceOfSell('Kraków')
     ->setPaymentMethod('Transfer')
     ->setPaymentDueToDate('2018-02-20')
-    ->setIssuedBy('Łukasz Cepowski')
+    ->setIssuedBy('Jędrzej Pompka')
     ->setSignedBy('Jan Kowalski')
     ;
 
+/**
+ * Fill out selling party information.
+ */
 $invoice->getSeller()
-    ->setCompanyName('LCX')
-    ->setContactName('Łukasz Cepowski')
+    ->setCompanyName('JP Consulting Jędrzej Pompka')
+    ->setContactName('Zenon Pompka')
     ->setTaxReference('987-654-32-10')
     ;
 $invoice->getSeller()->getAddress()
@@ -33,10 +39,13 @@ $invoice->getSeller()->getAddress()
 $invoice->getSeller()->getExtra()
     ->set('REGON', '123456789')
     ->set('Phone', '+48 502 123 456')
-    ->set('Email', 'contact@domain.tld')
-    ->set('WWW', 'www.domain.tld')
+    ->set('Email', 'kontakt@jpconsulting.tld')
+    ->set('WWW', 'www.jpconsulting.tld')
     ;
 
+/**
+ * Fill out buying party information.
+ */
 $invoice->getBuyer()
     ->setCompanyName('Jakaś Sp. z o.o.')
     ->setContactName('Jan Kowalski')
@@ -53,14 +62,20 @@ $invoice->getBuyer()->getExtra()
     ->set('Phone', '+48 666 321 654')
     ;
 
+/**
+ * Fill out bank account section.
+ */
 $invoice->getBankAccount()
     ->setIban('52 1050 1445 1000 0090 1234 5678')
     ->setBankName('ING Bank Śląski SA')
     ->setBankSwift('INGBPLPW')
-    ->setBeneficiaryName('LCX Łukasz Cepowski')
+    ->setBeneficiaryName('JP Consulting Jędrzej Pompka')
     ->setBeneficiaryAddress($invoice->getSeller()->getAddress())
     ;
 
+/**
+ * Add an item.
+ */
 $invoice->newItem()
     ->setIndex(1)
     ->setDescription('Elektronika do rakiety')
@@ -70,6 +85,9 @@ $invoice->newItem()
     ->setTaxPercentage(0.23)
     ;
 
+/**
+ * Add an item.
+ */
 $invoice->newItem()
     ->setIndex(2)
     ->setDescription('Usługa transportowa')
@@ -77,6 +95,10 @@ $invoice->newItem()
     ->setUnitNetPrice(100.00)
     ->setTaxPercentage(0.23)
     ;
+
+/**
+ * Add a bunch of custom plugins for rendering.
+ */
 
 $faktura->getRenderer()->plugin('asset', function ($relativePath) {
     return __DIR__ . '/' . $relativePath;
@@ -98,5 +120,8 @@ $faktura->getRenderer()->plugin('nospaces', function ($value) {
     return str_replace(' ', '', $value);
 });
 
+/**
+ * Select template, render and export to PDF.
+ */
 $faktura->setTemplate(__DIR__ . '/simple_invoice_pl.phtml');
 $faktura->export($invoice, __DIR__ . '/simple_invoice_pl.pdf');

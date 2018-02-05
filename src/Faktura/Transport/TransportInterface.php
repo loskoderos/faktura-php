@@ -9,10 +9,4 @@ interface TransportInterface
      * @return mixed
      */
     public function getContent();
-    
-    /**
-     * Get assets collection.
-     * @return \Generic\Collection\CollectionInterface
-     */
-    public function getAssets();
 }

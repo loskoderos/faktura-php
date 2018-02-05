@@ -64,7 +64,7 @@ interface InvoiceInterface extends ToArrayInterface
     
     /**
      * Get items
-     * @return \Generic\Collection\Collection<ItemInterface>
+     * @return \Generic\Collection\Collection
      */
     public function getItems();
     

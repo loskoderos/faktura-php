@@ -31,7 +31,7 @@ interface ItemInterface extends ToArrayInterface
     public function getUnitName();
     
     /**
-     * Nex price of a single unit.
+     * Net price of a single unit.
      * @return double
      */
     public function getUnitNetPrice();
