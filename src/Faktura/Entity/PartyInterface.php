@@ -2,7 +2,9 @@
 
 namespace Faktura\Entity;
 
-interface PartyInterface
+use Generic\Object\ToArrayInterface;
+
+interface PartyInterface extends ToArrayInterface
 {
     /**
      * Get business (company) name.

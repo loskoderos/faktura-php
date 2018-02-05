@@ -9,6 +9,7 @@ $faktura = new Faktura();
 $invoice = $faktura->newInvoice();
 $invoice
     ->setInvoiceReference('FV/123/2018/02')
+    ->setCurrency('PLN')
     ->setDateOfIssue('2018-02-06')
     ->setDateOfSell('2018-02-05')
     ->setPlaceOfIssue('Warszawa')
@@ -61,6 +62,7 @@ $invoice->getBankAccount()
     ;
 
 $invoice->newItem()
+    ->setIndex(1)
     ->setDescription('Elektronika do rakiety')
     ->setQuantity(21)
     ->setUnitName('szt.')
@@ -69,6 +71,7 @@ $invoice->newItem()
     ;
 
 $invoice->newItem()
+    ->setIndex(2)
     ->setDescription('Usługa transportowa')
     ->setQuantity(1)
     ->setUnitNetPrice(100.00)

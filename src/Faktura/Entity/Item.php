@@ -102,18 +102,27 @@ class Item extends Object implements ItemInterface
         return $this->taxPercentage;
     }
     
-    public function computeTotalNetAmount()
+    public function getTotalNetAmount()
     {
         return $this->getUnitNetPrice() * $this->getQuantity();
     }
     
-    public function computeTotalTaxAmount()
+    public function getTotalTaxAmount()
     {
-        return $this->computeTotalNetAmount() * $this->getTaxPercentage();
+        return $this->getTotalNetAmount() * $this->getTaxPercentage();
     }
     
-    public function computeTotalAmount()
+    public function getTotalAmount()
     {
-        return $this->computeTotalNetAmount() + $this->computeTotalTaxAmount();
+        return $this->getTotalNetAmount() + $this->getTotalTaxAmount();
+    }
+    
+    public function toArray()
+    {
+        return array_merge(parent::toArray(), array(
+            'totalNetAmount' => $this->getTotalNetAmount(),
+            'totalTaxAmount' => $this->getTotalTaxAmount(),
+            'totalAmount' => $this->getTotalAmount()
+        ));
     }
 }

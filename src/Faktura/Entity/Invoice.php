@@ -21,6 +21,11 @@ class Invoice extends Object implements InvoiceInterface
     /**
      * @var string
      */
+    protected $currency;
+    
+    /**
+     * @var string
+     */
     protected $placeOfIssue;
 
     /**
@@ -123,6 +128,17 @@ class Invoice extends Object implements InvoiceInterface
     public function getPurchaseOrderReference()
     {
         return $this->purchaseOrderReference;
+    }
+    
+    public function setCurrency($currency)
+    {
+        $this->currency = (string) $currency;
+        return $this;
+    }
+    
+    public function getCurrency()
+    {
+        return $this->currency;
     }
     
     public function setPlaceOfIssue($placeOfIssue)
@@ -336,18 +352,40 @@ class Invoice extends Object implements InvoiceInterface
         return $this->extra;
     }
     
-    public function computeTotalNetAmount()
+    public function getTotalNetAmount()
     {
-        
+        $amount = 0.0;
+        foreach ($this->items as $item) {
+            $amount += $item->getTotalNetAmount();
+        }
+        return $amount;
     }
     
-    public function computeTotalTaxAmount()
+    public function getTotalTaxAmount()
     {
-        
+        $amount = 0.0;
+        foreach ($this->items as $item) {
+            $amount += $item->getTotalTaxAmount();
+        }
+        return $amount;
     }
     
-    public function computeTotalAmount()
+    public function getTotalAmount()
     {
-        
+        $amount = 0.0;
+        foreach ($this->items as $item) {
+            $amount += $item->getTotalAmount();
+        }
+        $amount -= $this->getDeductionAmount();
+        return $amount;
+    }
+    
+    public function toArray()
+    {
+        return array_merge(parent::toArray(), array(
+            'totalNetAmount' => $this->getTotalNetAmount(),
+            'totalTaxAmount' => $this->getTotalTaxAmount(),
+            'totalAmount' => $this->getTotalAmount()
+        ));
     }
 }

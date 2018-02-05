@@ -2,7 +2,9 @@
 
 namespace Faktura\Entity;
 
-interface InvoiceInterface
+use Generic\Object\ToArrayInterface;
+
+interface InvoiceInterface extends ToArrayInterface
 {
     /**
      * Get invoice number.
@@ -17,6 +19,12 @@ interface InvoiceInterface
      * @return string
      */
     public function getPurchaseOrderReference();
+    
+    /**
+     * Get currency.
+     * @return string
+     */
+    public function getCurrency();
     
     /**
      * Get place of issue.
@@ -114,18 +122,18 @@ interface InvoiceInterface
      * Usually: total net amount = SUM(item 1 net amount, ..., item N net amount)
      * @return double
      */
-    public function computeTotalNetAmount();
+    public function getTotalNetAmount();
     
     /**
      * Get total amount of tax.
      * Usually: total tax amount = SUM(item 1 tax amount, ..., item N tax amount)
      * @return double
      */
-    public function computeTotalTaxAmount();
+    public function getTotalTaxAmount();
     
     /**
      * Get gross amount.
      * Usually: total amount = SUM(item 1 total amount, ...., item N total amount) - deduction amount
      */
-    public function computeTotalAmount();
+    public function getTotalAmount();
 }

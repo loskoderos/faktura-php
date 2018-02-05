@@ -2,7 +2,9 @@
 
 namespace Faktura\Entity;
 
-interface BankAccountInterface
+use Generic\Object\ToArrayInterface;
+
+interface BankAccountInterface extends ToArrayInterface
 {
     /**
      * Get account IBAN number.

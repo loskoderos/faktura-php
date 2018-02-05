@@ -2,7 +2,9 @@
 
 namespace Faktura\Entity;
 
-interface AddressInterface
+use Generic\Object\ToArrayInterface;
+
+interface AddressInterface extends ToArrayInterface
 {
     /**
      * Street line.

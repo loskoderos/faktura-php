@@ -2,7 +2,9 @@
 
 namespace Faktura\Entity;
 
-interface ItemInterface
+use Generic\Object\ToArrayInterface;
+
+interface ItemInterface extends ToArrayInterface
 {
     /**
      * Index on the invoice.
@@ -46,19 +48,19 @@ interface ItemInterface
      * Usually: total net = unit net price * quantity
      * @return double
      */
-    public function computeTotalNetAmount();
+    public function getTotalNetAmount();
     
     /**
      * Get total tax over the item.
      * Usually: total tax = total net amount * tax
      * @return double
      */
-    public function computeTotalTaxAmount();
+    public function getTotalTaxAmount();
     
     /**
      * Gross price of the item.
      * Usually: total amount = total net amount + total tax amount
      * @return double
      */
-    public function computeTotalAmount();
+    public function getTotalAmount();
 }
