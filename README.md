@@ -34,3 +34,22 @@ $faktura->setTemplate('path_to_your_invoice_template.phtml');
 $faktura->export($invoice, 'invoice.pdf');
 ~~~
 
+## Installation
+Faktura is still under development, however if you want to try it out you can 
+easily install it with Composer:
+~~~
+composer config minimum-stability dev
+composer require loskoderos/faktura-php:dev-master
+~~~
+
+Before you use it, you need to take care of a couple od system dependencies.
+You'll need to install Xvfb and Wkhtmltopdf, on Ubuntu run:
+~~~
+sudo apt-get install xvfb wkhtmltopdf
+~~~
+
+## Contributing
+Contributions are welcome, please submit a pull request.
+
+## License
+MIT
