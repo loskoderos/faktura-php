@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/loskoderos/generic-php",
-                "reference": "8787c6903eac9efb763b2447ffe9eb0c8004dcef"
+                "reference": "48fa73e50ef33f1ba75c2b64699f6344123097fc"
             },
             "require": {
                 "php": ">=5.4.0"
@@ -42,7 +42,7 @@
             "support": {
                 "email": "hello@loskoderos.com"
             },
-            "time": "2018-02-05T13:34:50+00:00"
+            "time": "2018-02-05T16:27:46+00:00"
         }
     ],
     "packages-dev": [],

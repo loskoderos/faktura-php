@@ -3,6 +3,7 @@
 namespace Faktura;
 
 use PHPUnit\Framework\TestCase;
+use Generic\Utils\ArrayUtils;
 
 class FakturaTest extends TestCase
 {
@@ -39,6 +40,21 @@ class FakturaTest extends TestCase
             ->setSignedBy(self::TEST_SIGNED_BY)
             ;
         
-        var_dump($invoice->toArray());
+        $o = ArrayUtils::arrayToStdClass($invoice->toArray());
+        var_dump($o);
+        
+        $this->assertEquals(self::TEST_INVOICE_REF, $o->invoiceReference);
+        $this->assertEquals(self::TEST_PURCHASE_ORDER_REF, $o->purchaseOrderReference);
+        $this->assertEquals(self::TEST_CURRENCY, $o->currency);
+        $this->assertEquals(self::TEST_PLACE_OF_ISSUE, $o->placeOfIssue);
+        $this->assertEquals(self::TEST_PLACE_OF_SELL, $o->placeOfSell);
+        $this->assertEquals(self::TEST_DATE_OF_ISSUE, date('Y-m-d', $o->dateOfIssue->timestamp));
+        $this->assertEquals(self::TEST_DATE_OF_SELL, date('Y-m-d', $o->dateOfSell->timestamp));
+        $this->assertEquals(self::TEST_PAYMENT_METHOD, $o->paymentMethod);
+        $this->assertEquals(self::TEST_PAYMENT_DUE_TO_DATE, date('Y-m-d', $o->paymentDueToDate->timestamp));
+        $this->assertEquals(self::TEST_DEDUCTION_AMOUNT, $o->deductionAmount);
+        $this->assertEquals(self::TEST_DEDUCTION_DESCRIPTION, $o->deductionDescription);
+        $this->assertEquals(self::TEST_ISSUED_BY, $o->issuedBy);
+        $this->assertEquals(self::TEST_SIGNED_BY, $o->signedBy);
     }
 }
