@@ -1,44 +1,42 @@
 <?php
 
-namespace Faktura\Entity;
+namespace Koderos\Faktura\Model;
 
-use Generic\Object\ToArrayInterface;
-
-interface BankAccountInterface extends ToArrayInterface
+interface BankAccountInterface
 {
     /**
      * Get account IBAN number.
      * @return string
      */
-    public function getIban();
+    public function getIban(): ?string;
     
     /**
      * Get bank SWIFT code.
      * @return string
      */
-    public function getBankSwift();
+    public function getBankSwift(): ?string;
     
     /**
      * Get bank name.
      * @return string
      */
-    public function getBankName();
+    public function getBankName(): ?string;
     
     /**
      * Get bank address
      * @return AddressInterface
      */
-    public function getBankAddress();
+    public function getBankAddress(): AddressInterface;
     
     /**
      * Get beneficiary name.
      * @return string
      */
-    public function getBeneficiaryName();
+    public function getBeneficiaryName(): ?string;
     
     /**
      * Get beneficiary address.
      * @return AddressInterface
      */
-    public function getBeneficiaryAddress();
+    public function getBeneficiaryAddress(): AddressInterface;
 }

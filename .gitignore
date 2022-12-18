@@ -3,4 +3,6 @@
 .project
 .settings
 .buildpath
+.idea
 /nbproject
+.phpunit*

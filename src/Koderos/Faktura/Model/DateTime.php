@@ -1,12 +1,12 @@
 <?php
 
-namespace Faktura\Entity;
+namespace Koderos\Faktura\Model;
 
-use Generic\Object\ToArrayInterface;
+use Koderos\Generic\Model\ToArrayInterface;
 
 class DateTime extends \DateTime implements ToArrayInterface
 {
-    public function toArray()
+    public function toArray(): array
     {
         return [
             'timestamp' => $this->getTimestamp(),

@@ -1,30 +1,20 @@
 <?php
 
-namespace Faktura;
+namespace Koderos\Faktura;
 
-use Faktura\Entity\Invoice;
-use Faktura\Entity\InvoiceInterface;
-use Faktura\Exporter\ExporterInterface;
-use Faktura\Exporter\WkhtmltopdfExporter;
-use Faktura\Renderer\PhtmlRenderer;
-use Faktura\Renderer\RendererInterface;
+use Koderos\Faktura\Model\Invoice;
+use Koderos\Faktura\Model\InvoiceInterface;
+use Koderos\Faktura\Exporter\ExporterInterface;
+use Koderos\Faktura\Exporter\WkhtmltopdfExporter;
+use Koderos\Faktura\Renderer\PhtmlRenderer;
+use Koderos\Faktura\Renderer\RendererInterface;
+use Koderos\Faktura\Tranport\TransportInterface;
 
 class Faktura
 {
-    /**
-     * @var RendererInterface
-     */
-    protected $renderer;
-    
-    /**
-     * @var string
-     */
-    protected $template;
-    
-    /**
-     * @var ExporterInterface
-     */
-    protected $exporter;
+    protected RendererInterface $renderer;
+    protected string $template;
+    protected ExporterInterface $exporter;
     
     public function __construct()
     {
@@ -36,29 +26,25 @@ class Faktura
     
     /**
      * Create a new invoice.
-     * @return Invoice
      */
-    public function newInvoice()
+    public function newInvoice(): Invoice
     {
         return new Invoice();
     }
     
     /**
      * Set invoice renderer.
-     * @param RendererInterface $renderer
-     * @return $this
      */
-    public function setRenderer(RendererInterface $renderer)
+    public function setRenderer(RendererInterface $renderer): Faktura
     {
         $this->renderer = $renderer;
         return $this;
     }
     
     /**
-     * Get renderer.
-     * @return RendererInterface
+     * Get invoice renderer.
      */
-    public function getRenderer()
+    public function getRenderer(): RendererInterface
     {
         return $this->renderer;
     }
@@ -66,9 +52,8 @@ class Faktura
     /**
      * Set template, specifics depend on renderer type.
      * @param mixed $template
-     * @return $this
      */
-    public function setTemplate($template)
+    public function setTemplate($template): Faktura
     {
         $this->template = $template;
         return $this;
@@ -76,7 +61,6 @@ class Faktura
     
     /**
      * Get template.
-     * @return mixed
      */
     public function getTemplate()
     {
@@ -85,10 +69,8 @@ class Faktura
     
     /**
      * Set invoice exporter.
-     * @param ExporterInterface $exporter
-     * @return $this
      */
-    public function setExporter(ExporterInterface $exporter)
+    public function setExporter(ExporterInterface $exporter): Faktura
     {
         $this->exporter = $exporter;
         return $this;
@@ -96,28 +78,22 @@ class Faktura
     
     /**
      * Get exporter.
-     * @return ExporterInterface
      */
-    public function getExporter()
+    public function getExporter(): ExporterInterface
     {
         return $this->exporter;
     }
     
     /**
      * Render and export invoice, save to the output file.
-     * @param InvoiceInterface $invoice
-     * @param string $filename
-     * @return mixed
      */
-    public function export(InvoiceInterface $invoice, $filename)
+    public function export(InvoiceInterface $invoice, ?string $filename)
     {
         return $this->getExporter()->export($this->render($invoice), $filename);
     }
 
     /**
      * Render, used internally.
-     * @param InvoiceInterface $invoice
-     * @return \Faktura\Tranport\TransportInterface
      */
     protected function render(InvoiceInterface $invoice)
     {

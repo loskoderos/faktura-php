@@ -1,38 +1,36 @@
 <?php
 
-namespace Faktura\Entity;
+namespace Koderos\Faktura\Model;
 
-use Generic\Object\ToArrayInterface;
-
-interface AddressInterface extends ToArrayInterface
+interface AddressInterface
 {
     /**
      * Street line.
      * @return string
      */
-    public function getStreet();
+    public function getStreet(): ?string;
     
     /**
      * Second street line, in some countries street is broken to two lines.
      * @return string
      */
-    public function getStreetExt();
+    public function getStreetExt(): ?string;
     
     /**
      * City.
      * @return string
      */
-    public function getCity();
+    public function getCity(): ?string;
     
     /**
      * Country.
      * @return string
      */
-    public function getCountry();
+    public function getCountry(): ?string;
     
     /**
      * Post code.
      * @return string.
      */
-    public function getPostCode();
+    public function getPostCode(): ?string;
 }

@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a88599a9296ebcc1059dad0f469401c0",
+    "content-hash": "b9d4db837c1ef10ae93964095db22832",
     "packages": [
         {
             "name": "loskoderos/generic-php",
@@ -12,21 +12,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/loskoderos/generic-php.git",
-                "reference": "779354c235e5bb7ae247ee227d5e6a99e397861a"
+                "reference": "a6a482e571b6ea650bf6a4e2aabc4988862c6568"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/loskoderos/generic-php/zipball/779354c235e5bb7ae247ee227d5e6a99e397861a",
-                "reference": "779354c235e5bb7ae247ee227d5e6a99e397861a",
+                "url": "https://api.github.com/repos/loskoderos/generic-php/zipball/a6a482e571b6ea650bf6a4e2aabc4988862c6568",
+                "reference": "a6a482e571b6ea650bf6a4e2aabc4988862c6568",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=7.4"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Generic\\": "src/Generic"
+                    "Koderos\\Generic\\": "src/Koderos/Generic"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -40,8 +41,13 @@
                     "homepage": "https://cepa.io"
                 }
             ],
-            "description": "Generic PHP utilities library",
-            "time": "2018-02-05T18:26:21+00:00"
+            "description": "Dustbin for all PHP code thats Generic",
+            "support": {
+                "email": "hello@loskoderos.com",
+                "issues": "https://github.com/loskoderos/generic-php/issues",
+                "source": "https://github.com/loskoderos/generic-php/tree/master"
+            },
+            "time": "2022-12-18T13:22:56+00:00"
         }
     ],
     "packages-dev": [],
@@ -53,7 +59,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4.0"
+        "php": ">=7.4"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }

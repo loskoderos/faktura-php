@@ -1,7 +1,7 @@
 {
     "name": "loskoderos/faktura-php",
+    "description": "Generate pretty PDF invoices in PHP",
     "type": "library",
-    "description": "Faktura - HTML/PDF Invoice Generator",
     "license": "MIT",
     "authors": [
         {
@@ -15,18 +15,18 @@
     },
     "require": {
         "loskoderos/generic-php": "dev-master",
-        "php": ">=5.4.0"
+        "php": ">=7.4"
     },
     "require-dev": {
     },
     "autoload": {
         "psr-4": {
-            "Faktura\\": "src/Faktura"
+            "Koderos\\Faktura\\": "src/Koderos/Faktura"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Faktura\\": "test/Faktura"
+            "Tests\\": "test/Tests"
         }
     }
 }

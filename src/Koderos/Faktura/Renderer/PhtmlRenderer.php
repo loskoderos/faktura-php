@@ -1,22 +1,22 @@
 <?php
 
-namespace Faktura\Renderer;
+namespace Koderos\Faktura\Renderer;
 
-use Generic\Collection\Collection;
-use Generic\Utils\ArrayUtils;
-use Faktura\Entity\InvoiceInterface;
-use Faktura\Transport\Transport;
+use Koderos\Generic\Collection\Collection;
+use Koderos\Generic\Utils\ArrayUtils;
+use Koderos\Faktura\Model\InvoiceInterface;
+use Koderos\Faktura\Transport\Transport;
 
 class PhtmlRenderer implements RendererInterface
 {
-    protected $plugins;
+    protected Collection $plugins;
     
     public function __construct()
     {
         $this->plugins = new Collection();
     }
     
-    public function plugin($name, callable $callable)
+    public function plugin(string $name, callable $callable): PhtmlRenderer
     {
         if (!is_callable($callable)) {
             throw new RendererException("Plugin must be a callable");
@@ -33,7 +33,7 @@ class PhtmlRenderer implements RendererInterface
         return call_user_func_array($this->plugins->get($name), $args);
     }
     
-    public function render(InvoiceInterface $invoice, $template)
+    public function render(InvoiceInterface $invoice, $template): Transport
     {
         if (!is_file($template) || !file_exists($template)) {
             throw new RendererException("Can't open template file '{$template}'");

@@ -1,7 +1,10 @@
 # Faktura PHP
-Generate pretty PDF invoices in PHP.
+
+Generate pretty PDF invoices in PHP
 
 ## What is this?
+
+Faktura in polish means invoice and this library is created to render pretty invoices in PHP.
 
 Faktura is a simple standalone PHP library for rendering PDF invoices in PHP.
 You can easily integrate it into your own project using standard tools like
@@ -16,7 +19,7 @@ Sample PDF invoice: https://github.com/loskoderos/faktura-php/blob/master/exampl
 ## Basic usage
 Faktura is simple to use and it lets you to map an invoice structure and customize it to your needs.
 ~~~php
-use Faktura\Faktura;
+use Koderos\Faktura\Faktura;
 
 $faktura = new Faktura();
 

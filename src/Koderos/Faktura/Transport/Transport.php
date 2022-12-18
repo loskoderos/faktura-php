@@ -1,14 +1,14 @@
 <?php
 
-namespace Faktura\Transport;
+namespace Koderos\Faktura\Transport;
 
-use Generic\Object\Object;
+use Koderos\Generic\Model\Model;
 
-class Transport extends Object implements TransportInterface
+class Transport extends Model implements TransportInterface
 {
     protected $content;
     
-    public function setContent($content)
+    public function setContent($content): TransportInterface
     {
         $this->content = $content;
         return $this;

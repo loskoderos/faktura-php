@@ -1,66 +1,64 @@
 <?php
 
-namespace Faktura\Entity;
+namespace Koderos\Faktura\Model;
 
-use Generic\Object\ToArrayInterface;
-
-interface ItemInterface extends ToArrayInterface
+interface ItemInterface
 {
     /**
      * Index on the invoice.
-     * @return string|int
+     * @return string
      */
-    public function getIndex();
+    public function getIndex(): ?string;
     
     /**
      * Description of the item.
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): ?string;
     
     /**
      * Number of items.
      * @return int
      */
-    public function getQuantity();
+    public function getQuantity(): int;
     
     /**
      * Name of the item unit.
      * @return string
      */
-    public function getUnitName();
+    public function getUnitName(): ?string;
     
     /**
      * Net price of a single unit.
-     * @return double
+     * @return float
      */
-    public function getUnitNetPrice();
+    public function getUnitNetPrice(): float;
     
     /**
      * Tax associated with unit net price.
      * Should be a numeral between [0.00, 1.00]
-     * @return double
+     * @return float
      */
-    public function getTaxPercentage();
+    public function getTaxPercentage(): float;
     
     /**
      * Get total net cost of the item.
      * Usually: total net = unit net price * quantity
-     * @return double
+     * @return float
      */
-    public function getTotalNetAmount();
+    public function getTotalNetAmount(): float;
     
     /**
      * Get total tax over the item.
      * Usually: total tax = total net amount * tax
-     * @return double
+     * @return float
      */
-    public function getTotalTaxAmount();
+    public function getTotalTaxAmount(): float;
     
     /**
      * Gross price of the item.
      * Usually: total amount = total net amount + total tax amount
-     * @return double
+     * @return float
      */
-    public function getTotalAmount();
+    public function getTotalAmount(): float;
 }

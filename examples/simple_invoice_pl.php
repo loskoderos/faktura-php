@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Faktura\Faktura;
+use Koderos\Faktura\Faktura;
 
 $faktura = new Faktura();
 

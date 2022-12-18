@@ -1,36 +1,32 @@
 <?php
 
-namespace Faktura\Exporter;
+namespace Koderos\Faktura\Exporter;
 
-use Faktura\Transport\TransportInterface;
+use Koderos\Faktura\Transport\TransportInterface;
 
 class WkhtmltopdfExporter implements ExporterInterface
 {
-    protected $tempDir;
-    
-    protected $timeout;
-    
-    protected $wkhtmltopdfCommand;
-    
-    protected $xvfbCommand;
-    
-    protected $timeoutCommand;
+    protected string $tempDir;
+    protected int $timeout;
+    protected string $wkhtmltopdfCommand;
+    protected string $xvfbCommand;
+    protected string $timeoutCommand;
     
     public function __construct(
-            $tempDir = '/tmp',
-            $timeout = 10,
-            $wkhtmltopdfCommand = 'wkhtmltopdf',
-            $xvfbCommand = 'xvfb-run',
-            $timeoutCommand = 'timeout')
+            string $tempDir = '/tmp',
+            int $timeout = 10,
+            string $wkhtmltopdfCommand = 'wkhtmltopdf',
+            string $xvfbCommand = 'xvfb-run',
+            string $timeoutCommand = 'timeout')
     {
-        $this->tempDir = (string) $tempDir;
-        $this->timeout = (int) $timeout;
-        $this->wkhtmltopdfCommand = (string) $wkhtmltopdfCommand;
-        $this->xvfbCommand = (string) $xvfbCommand;
-        $this->timeoutCommand = (string) $timeoutCommand;
+        $this->tempDir = $tempDir;
+        $this->timeout = $timeout;
+        $this->wkhtmltopdfCommand = $wkhtmltopdfCommand;
+        $this->xvfbCommand = $xvfbCommand;
+        $this->timeoutCommand = $timeoutCommand;
     }
     
-    public function export(TransportInterface $transport, $filename)
+    public function export(TransportInterface $transport, string $filename)
     {
         $tmpFilename = tempnam($this->tempDir, 'faktura-');
         rename($tmpFilename, $tmpFilename . '.html');

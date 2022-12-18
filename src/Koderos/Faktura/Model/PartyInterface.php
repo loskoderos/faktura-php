@@ -1,46 +1,46 @@
 <?php
 
-namespace Faktura\Entity;
+namespace Koderos\Faktura\Model;
 
-use Generic\Object\ToArrayInterface;
+use Koderos\Generic\Collection\CollectionInterface;
 
-interface PartyInterface extends ToArrayInterface
+interface PartyInterface
 {
     /**
      * Get business (company) name.
      * @return string
      */
-    public function getCompanyName();
+    public function getCompanyName(): ?string;
     
     /**
      * Get contact person name.
      * @return string
      */
-    public function getContactName();
+    public function getContactName(): ?string;
     
     /**
      * Get address.
      * @return AddressInterface
      */
-    public function getAddress();
+    public function getAddress(): AddressInterface;
     
     /**
      * Get tax reference number.
      * In EU it is VAT ID.
      * @return string
      */
-    public function getTaxReference();
+    public function getTaxReference(): ?string;
     
     /**
      * Get company reference number.
      * In some countries each business has its own company registration number.
      * @return string
      */
-    public function getCompanyReference();
+    public function getCompanyReference(): ?string;
     
     /**
      * Get extra details.
-     * @return \Generic\Collection\CollectionInterface
+     * @return CollectionInterface
      */
-    public function getExtra();
+    public function getExtra(): CollectionInterface;
 }
