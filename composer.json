@@ -21,12 +21,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Koderos\\Faktura\\": "src/Koderos/Faktura"
+            "LosKoderos\\Faktura\\": "src/LosKoderos/Faktura"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "test/Tests"
+            "Tests\\LosKoderos\\": "test/Tests/LosKoderos"
         }
     }
 }

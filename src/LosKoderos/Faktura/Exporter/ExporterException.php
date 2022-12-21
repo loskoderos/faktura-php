@@ -1,6 +1,6 @@
 <?php
 
-namespace Koderos\Faktura\Exporter;
+namespace LosKoderos\Faktura\Exporter;
 
 class ExporterException extends \RuntimeException
 {

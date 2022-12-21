@@ -1,8 +1,8 @@
 <?php
 
-namespace Koderos\Faktura\Transport;
+namespace LosKoderos\Faktura\Transport;
 
-use Koderos\Generic\Model\Model;
+use LosKoderos\Generic\Model\Model;
 
 class Transport extends Model implements TransportInterface
 {

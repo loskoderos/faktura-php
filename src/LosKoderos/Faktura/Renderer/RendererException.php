@@ -1,6 +1,6 @@
 <?php
 
-namespace Koderos\Faktura\Renderer;
+namespace LosKoderos\Faktura\Renderer;
 
 class RendererException extends \RuntimeException
 {

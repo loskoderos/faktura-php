@@ -1,8 +1,8 @@
 <?php
 
-namespace Koderos\Faktura\Model;
+namespace LosKoderos\Faktura\Model;
 
-use Koderos\Generic\Collection\CollectionInterface;
+use LosKoderos\Generic\Collection\CollectionInterface;
 
 interface PartyInterface
 {

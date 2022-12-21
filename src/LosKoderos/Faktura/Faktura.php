@@ -1,14 +1,14 @@
 <?php
 
-namespace Koderos\Faktura;
+namespace LosKoderos\Faktura;
 
-use Koderos\Faktura\Model\Invoice;
-use Koderos\Faktura\Model\InvoiceInterface;
-use Koderos\Faktura\Exporter\ExporterInterface;
-use Koderos\Faktura\Exporter\WkhtmltopdfExporter;
-use Koderos\Faktura\Renderer\PhtmlRenderer;
-use Koderos\Faktura\Renderer\RendererInterface;
-use Koderos\Faktura\Tranport\TransportInterface;
+use LosKoderos\Faktura\Model\Invoice;
+use LosKoderos\Faktura\Model\InvoiceInterface;
+use LosKoderos\Faktura\Exporter\ExporterInterface;
+use LosKoderos\Faktura\Exporter\WkhtmltopdfExporter;
+use LosKoderos\Faktura\Renderer\PhtmlRenderer;
+use LosKoderos\Faktura\Renderer\RendererInterface;
+use LosKoderos\Faktura\Tranport\TransportInterface;
 
 class Faktura
 {

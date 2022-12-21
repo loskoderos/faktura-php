@@ -19,7 +19,7 @@ Sample PDF invoice: https://github.com/loskoderos/faktura-php/blob/master/exampl
 ## Basic usage
 Faktura is simple to use and it lets you to map an invoice structure and customize it to your needs.
 ~~~php
-use Koderos\Faktura\Faktura;
+use LosKoderos\Faktura\Faktura;
 
 $faktura = new Faktura();
 

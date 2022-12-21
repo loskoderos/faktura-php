@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Koderos\Faktura;
+namespace Tests\LosKoderos\Faktura;
 
 use PHPUnit\Framework\TestCase;
-use Koderos\Generic\Utils\ArrayUtils;
-use Koderos\Faktura\Faktura;
-use Koderos\Faktura\Exporter\ExporterInterface;
-use Koderos\Faktura\Transport\Transport;
-use Koderos\Faktura\Transport\TransportInterface;
+use LosKoderos\Generic\Utils\ArrayUtils;
+use LosKoderos\Faktura\Faktura;
+use LosKoderos\Faktura\Exporter\ExporterInterface;
+use LosKoderos\Faktura\Transport\Transport;
+use LosKoderos\Faktura\Transport\TransportInterface;
 
 class MockExporter implements ExporterInterface
 {

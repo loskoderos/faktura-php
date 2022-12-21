@@ -1,8 +1,8 @@
 <?php
 
-namespace Koderos\Faktura\Model;
+namespace LosKoderos\Faktura\Model;
 
-use Koderos\Generic\Model\Model;
+use LosKoderos\Generic\Model\Model;
 
 class Item extends Model implements ItemInterface
 {

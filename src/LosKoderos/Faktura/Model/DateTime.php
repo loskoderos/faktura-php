@@ -1,8 +1,8 @@
 <?php
 
-namespace Koderos\Faktura\Model;
+namespace LosKoderos\Faktura\Model;
 
-use Koderos\Generic\Model\ToArrayInterface;
+use LosKoderos\Generic\Model\ToArrayInterface;
 
 class DateTime extends \DateTime implements ToArrayInterface
 {

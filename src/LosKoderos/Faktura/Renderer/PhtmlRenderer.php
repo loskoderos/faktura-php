@@ -1,11 +1,11 @@
 <?php
 
-namespace Koderos\Faktura\Renderer;
+namespace LosKoderos\Faktura\Renderer;
 
-use Koderos\Generic\Collection\Collection;
-use Koderos\Generic\Utils\ArrayUtils;
-use Koderos\Faktura\Model\InvoiceInterface;
-use Koderos\Faktura\Transport\Transport;
+use LosKoderos\Generic\Collection\Collection;
+use LosKoderos\Generic\Utils\ArrayUtils;
+use LosKoderos\Faktura\Model\InvoiceInterface;
+use LosKoderos\Faktura\Transport\Transport;
 
 class PhtmlRenderer implements RendererInterface
 {

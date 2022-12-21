@@ -1,9 +1,9 @@
 <?php
 
-namespace Koderos\Faktura\Renderer;
+namespace LosKoderos\Faktura\Renderer;
 
-use Koderos\Faktura\Model\InvoiceInterface;
-use Koderos\Faktura\Transport\TransportInterface;
+use LosKoderos\Faktura\Model\InvoiceInterface;
+use LosKoderos\Faktura\Transport\TransportInterface;
 
 interface RendererInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Koderos\Faktura\Transport;
+namespace LosKoderos\Faktura\Transport;
 
 interface TransportInterface
 {

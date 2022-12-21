@@ -1,8 +1,8 @@
 <?php
 
-namespace Koderos\Faktura\Exporter;
+namespace LosKoderos\Faktura\Exporter;
 
-use Koderos\Faktura\Transport\TransportInterface;
+use LosKoderos\Faktura\Transport\TransportInterface;
 
 class WkhtmltopdfExporter implements ExporterInterface
 {

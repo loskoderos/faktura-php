@@ -1,10 +1,10 @@
 <?php
 
-namespace Koderos\Faktura\Model;
+namespace LosKoderos\Faktura\Model;
 
-use Koderos\Generic\Collection\Collection;
-use Koderos\Generic\Collection\CollectionInterface;
-use Koderos\Generic\Model\Model;
+use LosKoderos\Generic\Collection\Collection;
+use LosKoderos\Generic\Collection\CollectionInterface;
+use LosKoderos\Generic\Model\Model;
 
 class Invoice extends Model implements InvoiceInterface
 {
